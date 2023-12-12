@@ -1,5 +1,6 @@
 import React from "react";
 import Navebar from "../../Pages/shared/Navebar/Navebar";
+import { Outlet } from "react-router-dom";
 
 const MainLayOuts = () => {
   return (
@@ -7,7 +8,7 @@ const MainLayOuts = () => {
       <div className="flex-shrink-0">
         <Navebar />
       </div>
-      <h1 className="text-5xl">This is main Layoutes</h1>
+      <Outlet />
     </div>
   );
 };

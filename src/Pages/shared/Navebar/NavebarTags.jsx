@@ -45,7 +45,10 @@ const NavebarTags = () => {
           </p>
         ))}
         <button
-          onClick={() => setShowNewTag(true)}
+          onClick={(e) => {
+            e.preventDefault();
+            setShowNewTag(true);
+          }}
           className={`text-sm items-center capitalize font-medium rounded-md px-3 py-1 gap-2 cursor-pointer ${
             !showNewTag ? "inline-block" : "hidden"
           } ${tags.length < 3 ? "inline-block" : "hidden"}`}
