@@ -39,13 +39,19 @@ const DynamicList = () => {
       <h3 className="text-2xl font-bold">List</h3>
       <ul className="mb-3">
         {items.map((item, index) => (
-          <li key={index} className="flex gap-2 items-center">
+          <li
+            key={index}
+            className="flex w-4/6 p-2 capitalize gap-2 items-center"
+          >
             <div
               style={{ background: item.color }}
               className="w-[10px] h-[10px]"
             ></div>{" "}
             {item.text}
-            <button onClick={() => handleRemoveItem(index)}>
+            <button
+              className="justify-self-end"
+              onClick={() => handleRemoveItem(index)}
+            >
               <IoIosTrash className="text-rose-500" />
             </button>
           </li>

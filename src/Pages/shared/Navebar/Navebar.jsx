@@ -7,6 +7,7 @@ import { CiStickyNote } from "react-icons/ci";
 
 import NavSearch from "./NavSearch";
 import DynamicList from "./itemList";
+import NavebarTags from "./NavebarTags";
 
 const Navebar = () => {
   return (
@@ -42,6 +43,10 @@ const Navebar = () => {
       {/* list  */}
       <div id="handleAddItem">
         <DynamicList></DynamicList>
+      </div>
+
+      <div id="tags">
+        <NavebarTags></NavebarTags>
       </div>
     </div>
   );
