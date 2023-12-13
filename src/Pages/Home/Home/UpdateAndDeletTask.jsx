@@ -1,0 +1,88 @@
+import React, { useState } from "react";
+
+const UpdateAndDeletTask = () => {
+  const [todos, setTodos] = useState([]);
+  const handleTodoSubmite = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const headline = form.headLine.value;
+    const details = form.details.value;
+    const list = form.list.value;
+    const date = form.date.value;
+    const tag = form.tag.value;
+    const newToDo = { headline, details, tag, date, list };
+
+    setTodos([...todos, newToDo]);
+    form.reset();
+  };
+  return (
+    <div className="ms-3 mt-3 p-5 bg-slate-300 h-full rounded-md">
+      <form onSubmit={handleTodoSubmite}>
+        <input
+          name="headLine"
+          type="text"
+          placeholder="Write task headline"
+          className="outline-none border border-slate-300 rounded-md my-3 px-2 py-2  w-full max-w-xs"
+        />
+        <textarea
+          name="details"
+          placeholder="Add details mb-3"
+          className="textarea resize-none textarea-bordered textarea-lg w-full max-w-xs"
+        ></textarea>
+        <div className="flex gap-5 items-center my-3">
+          <h3 className="text-lg font-medium">List</h3>
+          <select
+            name="list"
+            className="select select-bordered select-sm max-w-xs"
+          >
+            <option disabled selected>
+              Select
+            </option>
+            <option>Personal</option>
+            <option>Work</option>
+            <option>List 1</option>
+          </select>
+        </div>
+        <div className="flex gap-5 items-center my-3">
+          <h3 className="text-md font-medium">Deu Date</h3>
+          <select
+            name="date"
+            className="select select-bordered select-sm max-w-xs"
+          >
+            <option disabled selected>
+              select date
+            </option>
+            <option>12-24-23</option>
+            <option>next</option>
+            <option>next xxl 1</option>
+          </select>
+        </div>
+
+        <div className="flex gap-5 items-center my-3">
+          <h3 className="text-md font-medium">select tags</h3>
+          <select
+            name="tag"
+            className="select select-bordered select-sm max-w-xs"
+          >
+            <option disabled selected>
+              select date
+            </option>
+            <option>Tag1</option>
+            <option>Tag2</option>
+            <option>Tag3 1</option>
+          </select>
+        </div>
+        <div className="flex mt-20 items-center justify-around">
+          <button type="submit" className="btn ms-auto block my-3 bg-green-500">
+            Save changes
+          </button>
+          <button type="submit" className="btn ms-auto block my-3 bg-green-500">
+            Delete Task
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default UpdateAndDeletTask;

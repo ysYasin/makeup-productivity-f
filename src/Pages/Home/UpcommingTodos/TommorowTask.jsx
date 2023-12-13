@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-import UpdateAndDeletTask from "./UpdateAndDeletTask";
 
-const Today = () => {
+import UpdateAndDeletTask from "../Home/UpdateAndDeletTask";
+import PaceTask from "../../shared/PlaceTask/PaceTask";
+
+const TommorowTask = () => {
   const [updateBar, setUpdateBar] = useState(false);
-  const [todos, setTodos] = useState([]);
-  const handleTodoSubmite = (e) => {
+  const [Tommorowtodos, setTommorowTodos] = useState([]);
+  const handleTommorowTodoSubmite = (e) => {
     e.preventDefault();
     const form = e.target;
     const headline = form.headLine.value;
@@ -17,13 +17,13 @@ const Today = () => {
     const tag = form.tag.value;
     const newToDo = { headline, details, tag, date, list };
 
-    setTodos([...todos, newToDo]);
+    setTommorowTodos([...Tommorowtodos, newToDo]);
   };
 
   return (
     <div className="w-full">
       <header className="py-5 border-b w-full ">
-        <h1 className="text-5xl suger font-medium">ToDay</h1>
+        <h1 className="text-5xl suger font-medium">Tomorrow</h1>
       </header>
       <div className="flex w-full">
         <div className="flex-grow">
@@ -38,7 +38,7 @@ const Today = () => {
 
             <dialog id="my_modal_1" className="modal">
               <div className="modal-box relative">
-                <form onSubmit={handleTodoSubmite}>
+                <form onSubmit={handleTommorowTodoSubmite}>
                   <input
                     name="headLine"
                     type="text"
@@ -112,50 +112,11 @@ const Today = () => {
             </dialog>
           </div>
 
-          {todos.map((todo, i) => {
-            return (
-              <div
-                onClick={() => setUpdateBar(!updateBar)}
-                key={i}
-                className="py-2 border-b w-full cursor-pointer flex items-center justify-between pe-10"
-              >
-                <div>
-                  <div className="flex gap-4 items-center">
-                    <input type="checkbox" className=" read-only:" />
-                    <h1 className="text-lg font-medium">{todo.headline}</h1>
-                  </div>
-                  <div className="flex gap-4 items-center">
-                    {todo.date !== "select" ? (
-                      <h3 className="text-md font-medium items-center mt-2 flex gap-1">
-                        <FaRegCalendarAlt />
-                        {todo?.date}
-                      </h3>
-                    ) : (
-                      ""
-                    )}
-                    {todo.list !== "select date" ? (
-                      <h3 className="text-md font-medium items-center mt-2 flex gap-1">
-                        <div className={`h-[14px] w-[14px] bg-rose-500`}></div>
-                        {todo?.list}
-                      </h3>
-                    ) : (
-                      ""
-                    )}
-                    {todo.tag !== "select" ? (
-                      <button className="text-md font-medium mt-2 bg-green-400 px-3 py-1 rounded-md">
-                        {todo?.list}
-                      </button>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                </div>
-                <div>
-                  <FaChevronRight className="text-3xl" />
-                </div>
-              </div>
-            );
-          })}
+          <PaceTask
+            todos={Tommorowtodos}
+            updateBar={updateBar}
+            setUpdateBar={setUpdateBar}
+          ></PaceTask>
         </div>
 
         <div
@@ -169,4 +130,4 @@ const Today = () => {
   );
 };
 
-export default Today;
+export default TommorowTask;
