@@ -3,6 +3,7 @@ import MainLayOuts from "../Layoutes/MainLayoutes/MainLayOuts";
 import Today from "../Pages/Home/Home/Today";
 import Upcomming from "../Pages/Home/UpcommingTodos/Upcomming";
 import StickyWall from "../Pages/stickyWall/StickyWall";
+import Calender from "../Pages/Celender/Calender";
 
 const Router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const Router = createBrowserRouter([
       {
         path: "/stickywall",
         element: <StickyWall />,
+      },
+      {
+        path: "/calender",
+        element: <Calender />,
       },
     ],
   },
